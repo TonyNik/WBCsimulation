@@ -1,0 +1,39 @@
+TITLE  WBC GeDet with Iron shielding + Phantom.
+       .
+       >>>>>>>> Source definition.
+SKPAR  0        [Primary particles: 1=electron, 2=photon, 3=positron]
+SRNUCL 152Eu.nuc                                 [NUCLEIDE data file]
+SPOSIT 0 0 14.9                           [Coordinates of the source]
+C Thyroid: 14.9, Lungs: 9, WB: 1.5, GI: 14      [Phantom z-positions]
+C Remove this and the above line for the simulation to run.
+SCONE  0 0 180                     [Beam direction: THETA,PHI in deg]
+       .
+       >>>>>>>> Material data and simulation parameters.
+MFNAME Ge.mat                         [Material file, up to 20 chars]
+MSIMPA 1.0e3 1.0e3 1.0e4 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+MFNAME Al.mat                         [Material file, up to 20 chars]
+MSIMPA 1.0e3 1.0e3 1.0e4 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+MFNAME Air.mat                        [Material file, up to 20 chars]
+MSIMPA 1.0e3 1.0e3 1.0e4 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+MFNAME Iron.mat                       [Material file, up to 20 chars]
+MSIMPA 1.0e3 1.0e3 1.0e4 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+MFNAME Teflon.mat                     [Material file, up to 20 chars]
+MSIMPA 1.0e3 1.0e3 1.0e4 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+MFNAME PMMA.mat                       [Material file, up to 20 chars]
+MSIMPA 1.0e3 1.0e3 1.0e4 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+       .
+       >>>>>>>> Geometry definition file.
+GEOMFN detTot.geo                 [Geometry file name, 18 characters]
+
+       .   
+       >>>>>>>> Energy deposition detectors (up to 25).
+ENDETC 1e3 1.50E6 1000         [Energy window and number of channels]
+EDBODY 2                        [Active body; one line for each body]
+       .
+       >>>>>>>> Job properties.
+RESUME dump.dat                [Resume from this dump file, 20 chars]
+DUMPTO dump.dat                   [Generate this dump file, 20 chars]
+DUMPP  60                                    [Dumping period, in sec]
+       .
+NSIMSH 1.0e30                [Desired number of showers, max=2**31-1]
+TIME   800000                      [Allotted simulation time, in sec] 
